@@ -1,6 +1,6 @@
 import { createApp } from "vue";
 import { createWebHistory, createRouter } from "vue-router";
-
+import { createPinia } from 'pinia'; 
 // styles
 
 import "@fortawesome/fontawesome-free/css/all.min.css";
@@ -31,7 +31,7 @@ import Register from "@/views/auth/Register.vue";
 
 import Landing from "@/views/Landing.vue";
 import Profile from "@/views/Profile.vue";
-import Index from "@/views/Index.vue";
+// import Index from "@/views/Index.vue";
 
 // routes
 
@@ -56,6 +56,10 @@ const routes = [
       {
         path: "/admin/maps",
         component: Maps,
+      },
+      {
+        path: "/",
+        component: Dashboard,
       },
     ],
   },
@@ -82,10 +86,7 @@ const routes = [
     path: "/profile",
     component: Profile,
   },
-  {
-    path: "/",
-    component: Index,
-  },
+ 
   { path: "/:pathMatch(.*)*", redirect: "/" },
 ];
 
@@ -93,5 +94,17 @@ const router = createRouter({
   history: createWebHistory(),
   routes,
 });
+router.beforeEach((to, from, next) => {
+  const publicRoutes = ['/auth/login', '/auth/register'];
+  const isAuthenticated = localStorage.getItem('isAuthenticated') === 'true';
 
-createApp(App).use(router).mount("#app");
+  if (publicRoutes.includes(to.path)) {
+    next(); // Allow navigation to public routes
+  } else if (isAuthenticated) {
+    next(); // Allow navigation if authenticated
+  } else {
+    next('/auth/login'); // Redirect to login if not authenticated
+  }
+});
+const pinia = createPinia();
+createApp(App).use(router).use(pinia).mount("#app");

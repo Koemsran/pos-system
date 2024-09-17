@@ -1,13 +1,25 @@
 <template>
   <!-- Header -->
-  <div class="relative bg-emerald-600 md:pt-32 pb-32 pt-12">
+  <div class="relative md:pt-32 pb-32 pt-12" style="background-color: #006ca5;">
     <div class="px-4 md:px-10 mx-auto w-full">
       <div>
         <!-- Card stats -->
         <div class="flex flex-wrap">
           <div class="w-full lg:w-6/12 xl:w-3/12 px-4">
             <card-stats
-              statSubtitle="TRAFFIC"
+              statSubtitle="CLIENTS"
+              statTitle="924"
+              statArrow="down"
+              statPercent="1.10"
+              statPercentColor="text-orange-500"
+              statDescripiron="Since yesterday"
+              statIconName="fas fa-users"
+              statIconColor="bg-pink-500"
+            />
+          </div>
+          <div class="w-full lg:w-6/12 xl:w-3/12 px-4">
+            <card-stats
+              statSubtitle="BOOKING"
               statTitle="350,897"
               statArrow="up"
               statPercent="3.48"
@@ -31,19 +43,7 @@
           </div>
           <div class="w-full lg:w-6/12 xl:w-3/12 px-4">
             <card-stats
-              statSubtitle="SALES"
-              statTitle="924"
-              statArrow="down"
-              statPercent="1.10"
-              statPercentColor="text-orange-500"
-              statDescripiron="Since yesterday"
-              statIconName="fas fa-users"
-              statIconColor="bg-pink-500"
-            />
-          </div>
-          <div class="w-full lg:w-6/12 xl:w-3/12 px-4">
-            <card-stats
-              statSubtitle="PERFORMANCE"
+              statSubtitle="SIGNED"
               statTitle="49,65%"
               statArrow="up"
               statPercent="12"

@@ -18,38 +18,21 @@
         </span>
       </div>
     </a>
-    <div
-      ref="popoverDropdownRef"
+    <div ref="popoverDropdownRef"
       class="bg-white text-base z-50 float-left py-2 list-none text-left rounded shadow-lg min-w-48"
-      v-bind:class="{
-        hidden: !dropdownPopoverShow,
-        block: dropdownPopoverShow,
-      }"
-    >
-      <a
-        href="javascript:void(0);"
-        class="text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-blueGray-700"
-      >
-        Action
+      :class="{ hidden: !dropdownPopoverShow, block: dropdownPopoverShow }">
+      <a href="/profile"
+        class="text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-blueGray-700">
+        <i class="fas fa-user mr-2"></i> My Account
       </a>
-      <a
-        href="javascript:void(0);"
-        class="text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-blueGray-700"
-      >
-        Another action
+      <a @click="userLogout"
+        class="text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-blueGray-700 cursor-pointer">
+        <i class="fas fa-sign-out-alt mr-2"></i> Logout
       </a>
-      <a
-        href="javascript:void(0);"
-        class="text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-blueGray-700"
-      >
-        Something else here
-      </a>
-      <div class="h-0 my-2 border border-solid border-blueGray-100" />
-      <a
-        href="javascript:void(0);"
-        class="text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-blueGray-700"
-      >
-        Seprated link
+      <div class="h-0 my-2 border border-solid border-blueGray-100"></div>
+      <a href="/admin/settings"
+        class="text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-blueGray-700">
+        <i class="fas fa-cog mr-2"></i> Account Setting
       </a>
     </div>
   </div>

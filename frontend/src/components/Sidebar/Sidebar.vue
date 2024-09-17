@@ -15,10 +15,9 @@
       </button>
       <!-- Brand -->
       <router-link
-        class="md:block text-left md:pb-2 text-blueGray-600 mr-0 inline-block whitespace-nowrap text-sm uppercase font-bold p-4 px-0"
-        to="/"
-      >
-        Vue Notus
+        class="md:block text-left text-blueGray-600 inline-block text-sm uppercase font-bold py-0 flex items-center justify-center mx-auto"
+        to="/admin/dashboard">
+        <img width="130" height="100" src="../../assets/img/logo.png" alt="" class="mx-auto">
       </router-link>
       <!-- User -->
       <ul class="md:hidden items-center flex flex-wrap list-none">
@@ -34,30 +33,6 @@
         class="md:flex md:flex-col md:items-stretch md:opacity-100 md:relative md:mt-4 md:shadow-none shadow absolute top-0 left-0 right-0 z-40 overflow-y-auto overflow-x-hidden h-auto items-center flex-1 rounded"
         v-bind:class="collapseShow"
       >
-        <!-- Collapse header -->
-        <div
-          class="md:min-w-full md:hidden block pb-4 mb-4 border-b border-solid border-blueGray-200"
-        >
-          <div class="flex flex-wrap">
-            <div class="w-6/12">
-              <router-link
-                class="md:block text-left md:pb-2 text-blueGray-600 mr-0 inline-block whitespace-nowrap text-sm uppercase font-bold p-4 px-0"
-                to="/"
-              >
-                Vue Notus
-              </router-link>
-            </div>
-            <div class="w-6/12 flex justify-end">
-              <button
-                type="button"
-                class="cursor-pointer text-black opacity-50 md:hidden px-3 py-1 text-xl leading-none bg-transparent rounded border border-solid border-transparent"
-                v-on:click="toggleCollapseShow('hidden')"
-              >
-                <i class="fas fa-times"></i>
-              </button>
-            </div>
-          </div>
-        </div>
         <!-- Form -->
         <form class="mt-6 mb-4 md:hidden">
           <div class="mb-3 pt-0">
@@ -144,10 +119,10 @@
                 ]"
               >
                 <i
-                  class="fas fa-table mr-2 text-sm"
+                  class="fas fa-users mr-2 text-sm"
                   :class="[isActive ? 'opacity-75' : 'text-blueGray-300']"
                 ></i>
-                Tables
+                Our Clients
               </a>
             </router-link>
           </li>
