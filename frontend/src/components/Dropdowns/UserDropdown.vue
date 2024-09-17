@@ -38,30 +38,80 @@
   </div>
 </template>
 
+<style scoped>
+@import 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css';
+
+.profile-container {
+  width: 50px;
+  height: 50px;
+  background-color: #e2e8f0;
+  border: 2px solid #e2e8f0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.profile-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+</style>
+
 <script>
 import { createPopper } from "@popperjs/core";
-
-import image from "@/assets/img/team-1-800x800.jpg";
+import { ref, onMounted } from "vue";
+import { useAuthStore } from '@/stores/auth-store'; // Adjust the path if necessary
 
 export default {
-  data() {
-    return {
-      dropdownPopoverShow: false,
-      image: image,
-    };
-  },
-  methods: {
-    toggleDropdown: function (event) {
+  setup() {
+    const authStore = useAuthStore(); // Access the auth store
+    const user = ref({});
+    const dropdownPopoverShow = ref(false);
+
+    const btnDropdownRef = ref(null);
+    const popoverDropdownRef = ref(null);
+
+    onMounted(async () => {
+      try {
+        await authStore.fetchUser(); // Fetch user data from the store
+        user.value = authStore.user;
+      } catch (error) {
+        console.error('Error fetching user data:', error);
+      }
+    });
+
+    function toggleDropdown(event) {
       event.preventDefault();
-      if (this.dropdownPopoverShow) {
-        this.dropdownPopoverShow = false;
-      } else {
-        this.dropdownPopoverShow = true;
-        createPopper(this.$refs.btnDropdownRef, this.$refs.popoverDropdownRef, {
+      dropdownPopoverShow.value = !dropdownPopoverShow.value;
+      if (dropdownPopoverShow.value && btnDropdownRef.value && popoverDropdownRef.value) {
+        createPopper(btnDropdownRef.value, popoverDropdownRef.value, {
           placement: "bottom-start",
         });
       }
-    },
-  },
+    }
+
+    async function userLogout() {
+      try {
+        await authStore.logout(); // Use store action to logout
+
+        // Redirect to login page
+        window.location.href = '/auth/login'; // Adjust route as necessary
+      } catch (error) {
+        console.error('Error logging out:', error);
+      }
+    }
+
+    return {
+      user,
+      dropdownPopoverShow,
+      toggleDropdown,
+      userLogout,
+      btnDropdownRef,
+      popoverDropdownRef,
+    };
+  }
 };
 </script>

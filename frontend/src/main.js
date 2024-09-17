@@ -13,7 +13,6 @@ import App from "@/App.vue";
 // layouts
 
 import Admin from "@/layouts/Admin.vue";
-import Auth from "@/layouts/Auth.vue";
 
 // views for Admin layout
 
@@ -29,7 +28,6 @@ import Register from "@/views/auth/Register.vue";
 
 // views without layouts
 
-import Landing from "@/views/Landing.vue";
 import Profile from "@/views/Profile.vue";
 // import Index from "@/views/Index.vue";
 
@@ -64,23 +62,12 @@ const routes = [
     ],
   },
   {
-    path: "/auth",
-    redirect: "/auth/login",
-    component: Auth,
-    children: [
-      {
-        path: "/auth/login",
-        component: Login,
-      },
-      {
-        path: "/auth/register",
-        component: Register,
-      },
-    ],
+    path: "/auth/login",
+    component: Login,
   },
   {
-    path: "/landing",
-    component: Landing,
+    path: "/auth/register",
+    component: Register,
   },
   {
     path: "/profile",
