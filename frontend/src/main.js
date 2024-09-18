@@ -1,7 +1,9 @@
 import { createApp } from "vue";
 import { createWebHistory, createRouter } from "vue-router";
 import { createPinia } from 'pinia'; 
-// styles
+import piniaPersist from 'pinia-plugin-persistedstate';
+import { useAuthStore } from '@/stores/auth-store';
+
 
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "@/assets/styles/tailwind.css";
@@ -29,7 +31,10 @@ import Register from "@/views/auth/Register.vue";
 // views without layouts
 
 import Profile from "@/views/Profile.vue";
-// import Index from "@/views/Index.vue";
+import UserList from "@/views/user/UserList.vue";
+import CreateUser from "@/views/user/CreateUser.vue";
+import EditUser from "@/views/user/EditUser.vue";
+import Roles from "@/views/user/Role.vue";
 
 // routes
 
@@ -70,6 +75,22 @@ const routes = [
     component: Register,
   },
   {
+    path: "/user",
+    component: UserList,
+  },
+  {
+    path: "/user-create",
+    component: CreateUser,
+  },
+  {
+    path: "/user-edit",
+    component: EditUser,
+  },
+  {
+    path: "/role",
+    component: Roles,
+  },
+  {
     path: "/profile",
     component: Profile,
   },
@@ -83,7 +104,8 @@ const router = createRouter({
 });
 router.beforeEach((to, from, next) => {
   const publicRoutes = ['/auth/login', '/auth/register'];
-  const isAuthenticated = localStorage.getItem('isAuthenticated') === 'true';
+  const authStore = useAuthStore();
+  const isAuthenticated = authStore.isAuthenticated;
 
   if (publicRoutes.includes(to.path)) {
     next(); // Allow navigation to public routes
@@ -94,4 +116,5 @@ router.beforeEach((to, from, next) => {
   }
 });
 const pinia = createPinia();
+pinia.use(piniaPersist);
 createApp(App).use(router).use(pinia).mount("#app");

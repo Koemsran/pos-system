@@ -3,6 +3,7 @@
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\RoleController;
+use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -40,3 +41,10 @@ Route::get('/permissions/list', [PermissionController::class, 'index']);
 Route::post('/permission/create', [PermissionController::class, 'store']);
 Route::put('/permission/update/{id}', [PermissionController::class, 'update']);
 Route::delete('/permission/delete/{id}', [PermissionController::class, 'destroy']);
+
+// ========================= Users =============================
+Route::get('/users/list', [UserController::class, 'index']);
+Route::post('/user/create', [UserController::class, 'store']);
+Route::get('/user/show/{id}', [UserController::class, 'show']);
+Route::post('/user/update/{id}', [UserController::class, 'update']);
+Route::delete('/user/delete/{id}', [UserController::class, 'destroy']);

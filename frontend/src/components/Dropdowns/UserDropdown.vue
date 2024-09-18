@@ -1,20 +1,11 @@
 <template>
   <div>
-    <a
-      class="text-blueGray-500 block"
-      href="#pablo"
-      ref="btnDropdownRef"
-      v-on:click="toggleDropdown($event)"
-    >
+    <a class="text-blueGray-500 block" href="#pablo" ref="btnDropdownRef" @click="toggleDropdown">
       <div class="items-center flex">
-        <span
-          class="w-12 h-12 text-sm text-white bg-blueGray-200 inline-flex items-center justify-center rounded-full"
-        >
-          <img
-            alt="..."
-            class="w-full rounded-full align-middle border-none shadow-lg"
-            :src="image"
-          />
+        <span class="profile-container inline-flex items-center justify-center rounded-full">
+          <img v-if="user.profile" alt="Profile Picture" class="profile-img"
+            :src="`http://127.0.0.1:8000/storage/${user.profile}`" />
+          <img v-else alt="Default Profile Picture" class="profile-img" src="../../assets/img/def-logo.png" />
         </span>
       </div>
     </a>
@@ -62,25 +53,18 @@
 
 <script>
 import { createPopper } from "@popperjs/core";
-import { ref, onMounted } from "vue";
+import { ref, computed} from "vue";
 import { useAuthStore } from '@/stores/auth-store'; // Adjust the path if necessary
 
 export default {
   setup() {
     const authStore = useAuthStore(); // Access the auth store
-    const user = ref({});
     const dropdownPopoverShow = ref(false);
 
     const btnDropdownRef = ref(null);
     const popoverDropdownRef = ref(null);
-
-    onMounted(async () => {
-      try {
-        await authStore.fetchUser(); // Fetch user data from the store
-        user.value = authStore.user;
-      } catch (error) {
-        console.error('Error fetching user data:', error);
-      }
+    const user = computed(() => {
+      return authStore.user;
     });
 
     function toggleDropdown(event) {

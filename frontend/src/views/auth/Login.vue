@@ -81,13 +81,9 @@ export default {
           email: form.value.email,
           password: form.value.password,
         });
+        router.push('/');
+        console.log(authStore.user)
 
-        // Redirect based on roles or authentication
-        if (authStore.user && authStore.user.roles.includes('Staff')) {
-          router.push('/admin/leaves');
-        } else {
-          router.push('/');
-        }
       } catch (error) {
         // Handle specific error messages
         if (error.response && error.response.status === 401) {

@@ -30,7 +30,6 @@
           ></i>
           {{ statPercent }}%
         </span>
-        <span class="whitespace-nowrap">{{ statDescripiron }}</span>
       </p>
     </div>
   </div>
