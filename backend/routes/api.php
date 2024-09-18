@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\ClientsController;
 use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\RoleController;
 use Illuminate\Http\Request;
@@ -40,3 +41,11 @@ Route::get('/permissions/list', [PermissionController::class, 'index']);
 Route::post('/permission/create', [PermissionController::class, 'store']);
 Route::put('/permission/update/{id}', [PermissionController::class, 'update']);
 Route::delete('/permission/delete/{id}', [PermissionController::class, 'destroy']);
+
+
+// ========================= Clients =============================
+Route::get('/clients/list', [ClientsController::class, 'index']);
+Route::get('/client/{id}', [ClientsController::class,'show']);
+Route::post('/client/create', [ClientsController::class, 'store']);
+Route::put('/client/update/{id}', [ClientsController::class, 'update']);
+Route::delete('/client/delete/{id}', [ClientsController::class, 'destroy']);
