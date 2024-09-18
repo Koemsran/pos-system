@@ -4,7 +4,7 @@
     :class="[color === 'light' ? 'bg-white' : 'bg-emerald-900 text-white']"
   >
     <div class="flex justify-between items-center mb-4 px-4 mt-4">
-      <h2 class="text-2xl font-bold">List of Users</h2>
+      <h2 class="text-2xl font-bold">List of Clients</h2>
       <router-link
         to="/user-create"
         style="background-color: #006ca0"
@@ -15,12 +15,11 @@
       </router-link>
     </div>
     <div class="block w-full overflow-x-auto">
-      <!-- Projects table -->
       <table class="items-center w-full bg-transparent border-collapse">
         <thead>
           <tr>
             <th
-              class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left"
+              class="px-6 align-middle py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left"
               :class="[
                 color === 'light'
                   ? 'bg-blueGray-50 text-blueGray-500 border-blueGray-100'
@@ -30,53 +29,36 @@
               ID
             </th>
             <th
-              class="px-6 align-middle py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left"
+              class="px-6 align-middle py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left custom-border"
               :class="[
                 color === 'light'
                   ? 'bg-blueGray-50 text-blueGray-500'
                   : 'bg-emerald-800 text-emerald-300',
-                'custom-border',
               ]"
             >
               Profile
             </th>
             <th
-              class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left"
-              :class="[
-                color === 'light'
-                  ? 'bg-blueGray-50 text-blueGray-500 border-blueGray-100'
-                  : 'bg-emerald-800 text-emerald-300 border-emerald-700',
-              ]"
+              class="px-6 align-middle py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left"
+              :class="headerClass"
             >
               Full Name
             </th>
             <th
-              class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left"
-              :class="[
-                color === 'light'
-                  ? 'bg-blueGray-50 text-blueGray-500 border-blueGray-100'
-                  : 'bg-emerald-800 text-emerald-300 border-emerald-700',
-              ]"
+              class="px-6 align-middle py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left"
+              :class="headerClass"
             >
               Age
             </th>
             <th
-              class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left"
-              :class="[
-                color === 'light'
-                  ? 'bg-blueGray-50 text-blueGray-500 border-blueGray-100'
-                  : 'bg-emerald-800 text-emerald-300 border-emerald-700',
-              ]"
+              class="px-6 align-middle py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left"
+              :class="headerClass"
             >
               Phone Number
             </th>
             <th
-              class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left"
-              :class="[
-                color === 'light'
-                  ? 'bg-blueGray-50 text-blueGray-500 border-blueGray-100'
-                  : 'bg-emerald-800 text-emerald-300 border-emerald-700',
-              ]"
+              class="px-6 align-middle py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left"
+              :class="headerClass"
             >
               Action
             </th>
@@ -84,15 +66,10 @@
         </thead>
         <tbody>
           <tr v-for="(client, index) in clients" :key="client.id">
-            <td
-              class="border-t-0 px-6 align-middle border-l-0 border-r-0 whitespace-nowrap p-4"
-            >
+            <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 whitespace-nowrap p-4">
               {{ index + 1 }}
-              <!-- Show index + 1 for client ID -->
             </td>
-            <td
-              class="border-t-0 px-6 align-middle border-l-0 border-r-0 whitespace-nowrap p-4"
-            >
+            <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 whitespace-nowrap p-4">
               <img
                 v-if="client.profile"
                 :src="`http://127.0.0.1:8000/storage/${client.profile}`"
@@ -106,31 +83,17 @@
                 alt="Default Profile"
               />
             </td>
-            <td
-              class="border-t-0 px-6 text-sm align-middle border-l-0 border-r-0 whitespace-nowrap p-4"
-            >
+            <td class="border-t-0 px-6 text-sm align-middle border-l-0 border-r-0 whitespace-nowrap p-4">
               {{ client.name }}
-              <!-- Use client.name instead of user.name -->
             </td>
-            <td
-              class="border-t-0 px-6 text-sm align-middle border-l-0 border-r-0 whitespace-nowrap p-4"
-            >
+            <td class="border-t-0 px-6 text-sm align-middle border-l-0 border-r-0 whitespace-nowrap p-4">
               {{ client.age }}
-              <!-- Use client.age instead of client.age -->
             </td>
-            <td
-              class="border-t-0 px-6 text-sm align-middle border-l-0 border-r-0 whitespace-nowrap p-4"
-            >
+            <td class="border-t-0 px-6 text-sm align-middle border-l-0 border-r-0 whitespace-nowrap p-4">
               {{ client.phone_number }}
-              <!-- Use client.phone_number instead of client.phone_numberl -->
             </td>
-
-            <td
-              class="border-t-0 px-6 align-middle border-l-0 border-r-0 whitespace-nowrap p-4"
-            >
-              <router-link
-                :to="{ path: '/client-edit', query: { id: client.id } }"
-              >
+            <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 whitespace-nowrap p-4">
+              <router-link :to="{ path: '/client-edit', query: { id: client.id } }">
                 <i style="color: orange" class="fas fa-edit text-lg mr-3"></i>
               </router-link>
               <i
@@ -138,7 +101,6 @@
                 style="color: red"
                 class="fas fa-trash text-lg"
               ></i>
-              <!-- Use deleteClient -->
             </td>
           </tr>
         </tbody>
@@ -162,9 +124,7 @@ export default {
   props: {
     color: {
       default: "light",
-      validator: function (value) {
-        return ["light", "dark"].includes(value);
-      },
+      validator: (value) => ["light", "dark"].includes(value),
     },
   },
 
@@ -184,9 +144,7 @@ export default {
   methods: {
     async fetchClients() {
       try {
-        const response = await axios.get(
-          "http://127.0.0.1:8000/api/clients/list"
-        ); // Ensure this endpoint is correct
+        const response = await axios.get("http://127.0.0.1:8000/api/clients/list");
         this.clients = response.data.data; // Ensure this matches your API response structure
       } catch (error) {
         console.error("Error fetching clients:", error);
