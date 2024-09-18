@@ -50,7 +50,7 @@
                         <div class="mt-6">
                             <button type="submit" style="background-color: #006ca0;" class=" text-white px-4 py-2 rounded-md mr-3">Create
                                 User</button>
-                            <router-link to="/users" class="bg-red-500 text-white px-4 py-2 rounded-md">Cancel</router-link>
+                            <router-link to="/user" class="bg-red-500 text-white px-4 py-2 rounded-md">Cancel</router-link>
                         </div>
                     </form>
                 </div>
@@ -118,7 +118,7 @@ export default {
                 });
 
                 // Navigate to /admin/users on success
-                this.router.push('/users');
+                this.router.push('/user');
                 this.resetForm();
             } catch (error) {
                 // Handle error response

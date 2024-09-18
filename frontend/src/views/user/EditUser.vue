@@ -105,9 +105,6 @@ export default {
                 formData.append('roles[]', role);
             });
 
-
-            // Append department
-
             // Append the profile only if a file is selected
             if (this.form.profile) {
                 formData.append('profile', this.form.profile);
@@ -123,7 +120,7 @@ export default {
                     },
                 });
                 this.resetForm();
-                this.router.push('/users');
+                this.router.push('/user');
             } catch (error) {
                 alert('Error updating user');
                 console.error(error);
@@ -168,7 +165,7 @@ export default {
             };
         },
         cancel() {
-            this.router.push('/users'); // Redirect to user list on cancel
+            this.router.push('/user'); // Redirect to user list on cancel
         }
     }
 };

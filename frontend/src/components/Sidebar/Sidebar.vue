@@ -72,7 +72,7 @@
           </li>
 
           <li class="items-center">
-            <router-link to="/admin/maps" v-slot="{ href, navigate, isActive }">
+            <router-link to="/admin/client-progress" v-slot="{ href, navigate, isActive }">
               <a :href="href" @click="navigate" class="text-xs uppercase py-3 font-bold block" :class="[
                 isActive
                   ? 'text-emerald-500 hover:text-emerald-600'
@@ -84,7 +84,7 @@
             </router-link>
           </li>
           <li class="items-center">
-            <router-link to="/admin/maps" v-slot="{ href, navigate, isActive }">
+            <router-link to="/schedule" v-slot="{ href, navigate, isActive }">
               <a :href="href" @click="navigate" class="text-xs uppercase py-3 font-bold block" :class="[
                 isActive
                   ? 'text-emerald-500 hover:text-emerald-600'
