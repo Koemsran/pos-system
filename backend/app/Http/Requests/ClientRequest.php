@@ -16,7 +16,7 @@ class ClientRequest extends DefaultRequest
         return [
             'name' => ['required','string','max:255'],
             'age' => ['required','max:255'],
-            'phone' => ['required','string','max:15','unique:clients,phone_number,'],
+            'phone_number' => ['required','string','max:15','unique:clients,phone_number,'],
         ];
     }
 }

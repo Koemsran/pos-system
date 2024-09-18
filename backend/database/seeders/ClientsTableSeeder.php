@@ -9,14 +9,14 @@ class ClientsTableSeeder extends Seeder
     public function run()
     {
         Client::create([
-            'name' => 'John Doe',
-            'age' => 30,
+            'name' => 'Chan Nich',
+            'age' => 23,
             'phone_number' => '123-456-7890',
         ]);
 
         Client::create([
-            'name' => 'Jane Smith',
-            'age' => 25,
+            'name' => 'Koemsran',
+            'age' => 24,
             'phone_number' => '987-654-3210',
         ]);
         // Add more clients as needed
