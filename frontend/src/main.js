@@ -40,7 +40,6 @@ import Roles from "@/views/user/Role.vue";
 // view schedule 
 import Schedule from "@/views/schedule/Schedule.vue";
 
-
 // routes
 
 const routes = [
