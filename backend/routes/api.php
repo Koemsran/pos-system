@@ -43,13 +43,13 @@ Route::post('/permission/create', [PermissionController::class, 'store']);
 Route::put('/permission/update/{id}', [PermissionController::class, 'update']);
 Route::delete('/permission/delete/{id}', [PermissionController::class, 'destroy']);
 
-
 // ========================= Clients =============================
 Route::get('/clients/list', [ClientsController::class, 'index']);
 Route::get('/client/{id}', [ClientsController::class,'show']);
 Route::post('/client/create', [ClientsController::class, 'store']);
 Route::put('/client/update/{id}', [ClientsController::class, 'update']);
 Route::delete('/client/delete/{id}', [ClientsController::class, 'destroy']);
+
 // ========================= Users =============================
 Route::get('/users/list', [UserController::class, 'index']);
 Route::post('/user/create', [UserController::class, 'store']);

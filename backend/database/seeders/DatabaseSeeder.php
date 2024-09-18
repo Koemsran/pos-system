@@ -1,7 +1,7 @@
 <?php
-// database/seeders/DatabaseSeeder.php
 
-use Database\Seeders\AdminUserSeeder;
+namespace Database\Seeders;
+
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -13,8 +13,10 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+        // Call the individual seeders
         $this->call([
             AdminUserSeeder::class,
+            ClientsTableSeeder::class, // Ensure this is included
         ]);
     }
 }
