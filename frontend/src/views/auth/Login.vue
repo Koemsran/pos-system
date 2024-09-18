@@ -4,7 +4,7 @@
       <div class="w-full lg:w-4/12 px-4">
         <div class="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded-lg bg-blueGray-200 border-0">
           <div class="btn-wrapper text-center flex align-items-center justify-center mt-5">
-            <img width="100" height="150" src="../../assets/img/logo.png" alt="logo">
+            <img width="150" height="150" src="../../assets/img/logo1.png" alt="logo">
             <hr class="mt-6 border-b-1 border-blueGray-300" />
           </div>
           <div class="flex-auto px-4 lg:px-10 py-10 pt-0">

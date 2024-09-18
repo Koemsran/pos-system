@@ -7,7 +7,7 @@
         >
           <div class="rounded-t mb-0 px-6 py-6">
             <div class="text-center mb-3 flex align-items-center justify-center">
-              <img width="100" height="150" src="../../assets/img/logo.png" alt="logo">
+              <img width="150" height="150" src="../../assets/img/logo1.png" alt="logo">
             </div>
             <hr class="mt-6 border-b-1 border-blueGray-300" />
           </div>

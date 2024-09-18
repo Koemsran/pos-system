@@ -13,7 +13,7 @@
       <router-link
         class="md:block text-left text-blueGray-600 inline-block text-sm uppercase font-bold py-0 flex items-center justify-center mx-auto"
         to="/admin/dashboard">
-        <img width="130" height="100" src="../../assets/img/logo.png" alt="" class="mx-auto">
+        <img width="160" height="100" src="../../assets/img/logo.png" alt="" class="mx-auto">
       </router-link>
       <!-- User -->
       <ul class="md:hidden items-center flex flex-wrap list-none">
