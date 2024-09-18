@@ -17,6 +17,7 @@ class Client extends Model
     public static function store($request, $id = null)
     {
         $data = $request->only('name', 'age', 'phone_number');
-        return self::updateOrCreate(['id' => $id], $data);
+        $data = self::updateOrCreate(['id' => $id], $data);
+        return $data;
     }
 }
