@@ -36,6 +36,7 @@ import CreateUser from "@/views/user/CreateUser.vue";
 import EditUser from "@/views/user/EditUser.vue";
 import Roles from "@/views/user/Role.vue";
 
+
 // view schedule 
 import Schedule from "@/views/schedule/Schedule.vue";
 
@@ -101,8 +102,7 @@ const routes = [
     path: "/profile",
     component: Profile,
   },
- 
- 
+  
   { path: "/:pathMatch(.*)*", redirect: "/" },
 ];
 
