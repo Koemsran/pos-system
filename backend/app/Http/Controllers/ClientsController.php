@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\ClientResource;
 use App\Models\Client;
 use Illuminate\Http\Request;
 use PhpParser\Node\Expr\Cast\String_;
@@ -12,14 +13,15 @@ class ClientsController extends Controller
     public function index()
     {
         $clients = Client::all();
-        return $clients;
+        $clients = ClientResource::collection($clients);
+        return response()->json(['status' => true, 'data' => $clients], 200);
     }
 
     // Create Client
     public function store(Request $request)
     {
-        $client = Client::store($request);
-        return $client;
+        Client::store($request);
+        return response()->json(['status' => true, 'message' => 'Client created Successfully'], 200);;
     }
 
     // Show client details
@@ -37,7 +39,7 @@ class ClientsController extends Controller
     {
         // Use the store method from the Client model
         Client::store($request, $id);
-        return response()->json(['status' => true, 'message' => 'Updated Successfully'], 200);
+        return response()->json(['status' => true, 'message' => 'Client updated Successfully'], 200);
     }
 
     // Delete client
